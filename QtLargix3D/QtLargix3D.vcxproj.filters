@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+    </Filter>
+    <Filter Include="Models">
+      <UniqueIdentifier>{310f33d9-c7f8-4a1a-b885-c8f171484e25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Properties">
+      <UniqueIdentifier>{8199652d-f90c-4078-8c7b-434f54420774}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Views">
+      <UniqueIdentifier>{5a371c0c-055c-494f-9c4e-417c2f658b3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controllers">
+      <UniqueIdentifier>{08c882b6-ef84-4adf-9f37-e1620fa79168}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models\Abstract">
+      <UniqueIdentifier>{4ae3d3f4-ae13-4cb9-9d21-87f01c811b8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Views\Abstract">
+      <UniqueIdentifier>{58abbeac-b12d-4c48-9895-116d66ffd1aa}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="MainWindow.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtMoc Include="MainWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectController.cpp">
+      <Filter>Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyModel.cpp">
+      <Filter>Properties</Filter>
+    </ClCompile>
+    <ClCompile Include="PrintBaseModel.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectModel.cpp">
+      <Filter>Models\Abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="PartModel.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectView.cpp">
+      <Filter>Views\Abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="PartView.cpp">
+      <Filter>Views</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramModel.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="PrintBaseView.cpp">
+      <Filter>Views</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramView.cpp">
+      <Filter>Views</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="PropertyModel.h">
+      <Filter>Properties</Filter>
+    </QtMoc>
+    <QtMoc Include="ObjectModel.h">
+      <Filter>Models\Abstract</Filter>
+    </QtMoc>
+    <QtMoc Include="ObjectView.h">
+      <Filter>Views\Abstract</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Enumerations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectController.h">
+      <Filter>Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="PrintBaseModel.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="PartModel.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgramModel.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="PartView.h">
+      <Filter>Views</Filter>
+    </ClInclude>
+    <ClInclude Include="PrintBaseView.h">
+      <Filter>Views</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgramView.h">
+      <Filter>Views</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
