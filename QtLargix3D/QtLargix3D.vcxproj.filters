@@ -44,6 +44,9 @@
     <Filter Include="Widgets">
       <UniqueIdentifier>{f910870f-81c2-455e-a207-fee20daea6b5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Loaders">
+      <UniqueIdentifier>{296237a7-1724-4bbf-8922-560887a8fcda}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="MainWindow.qrc">

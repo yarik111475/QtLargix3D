@@ -4,6 +4,7 @@
 #include <QObject>
 #include "qpoint3d.h"
 #include "qrotation3D.h"
+#include "Enumerations.h"
 
 class QtProperty;
 class QtSizePropertyManager;
@@ -27,6 +28,7 @@ namespace Largix
 		~PropertyModel();
 		void setBrowser(QtAbstractPropertyBrowser* pBrowser);
 		virtual QtProperty* getGroupProperty() = 0;
+		virtual PropertyType getType() const = 0;
 
 		void setSize(const QSize& size);
 		QSize getSize()const;
@@ -79,7 +81,7 @@ namespace Largix
 
 	signals:
 		void signalPropertyChanged();
-	/*signals:
+	signals:
 		void signalSizeChanged(const QSize& size);
 	signals:
 		void signalColorChanged(const QColor& color);
@@ -90,7 +92,7 @@ namespace Largix
 	signals:
 		void signalTransparencyChanged(double transparency);
 	signals:
-		void signalVisibleChanged(bool visible);*/
+		void signalVisibleChanged(bool visible);
 	};
 }
 

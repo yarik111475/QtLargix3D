@@ -10,20 +10,29 @@ Largix::PropertyModel* Largix::PrintBaseModel::getPropertyModel(PropertyView* pP
 {
 	PrintBasePropertyModel* pModel = new PrintBasePropertyModel("PrintBaseModel", this);
 	pModel->setBrowser(pPropertyView->getBrowser());
-	QObject::connect(pModel, &PropertyModel::signalPropertyChanged,
-		this, &PrintBaseModel::slotPropertyChanged);
+	
 	return pModel;
 }
 
-void Largix::PrintBaseModel::slotPropertyChanged()
+void Largix::PrintBaseModel::slotSizeChanged(const QSize& size)
 {
-	PropertyModel* pModel = static_cast<PropertyModel*>(sender());
-	if (pModel) {
-		setSize(pModel->getSize());
-		setColor(pModel->getColor());
-		setPoint(pModel->getPoint());
-		setRotation(pModel->getRotation());
-		setTransparency(pModel->getTransparency());
-		setVisible(pModel->getVisible());
-	}
+}
+void Largix::PrintBaseModel::slotColorChanged(const QColor& color)
+{
+}
+
+void Largix::PrintBaseModel::slotPointChanged(const QPoint3D& point)
+{
+}
+
+void Largix::PrintBaseModel::slotRotationChanged(const QRotation3D& rotation)
+{
+}
+
+void Largix::PrintBaseModel::slotTransparencyChanged(double transparency)
+{
+}
+
+void Largix::PrintBaseModel::slotVisibleChanged(bool visible)
+{
 }

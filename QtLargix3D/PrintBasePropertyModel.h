@@ -12,5 +12,6 @@ namespace Largix
 		PrintBasePropertyModel(const QString& title, QObject* parent = nullptr);
 		~PrintBasePropertyModel();
 		virtual QtProperty* getGroupProperty() override;
+		virtual PropertyType getType() const override;
 	};
 }

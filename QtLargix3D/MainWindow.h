@@ -10,6 +10,9 @@ namespace Largix
 
     public:
         MainWindow(QWidget* parent = nullptr);
+
+    private:
+        QDockWidget* createDockWidget();
     };
 }
 

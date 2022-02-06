@@ -23,3 +23,8 @@ QtProperty* Largix::ProgramPropertyModel::getGroupProperty()
 	pGroupProperty->addSubProperty(_pTransparencyProperty);
 	return pGroupProperty;
 }
+
+PropertyType Largix::ProgramPropertyModel::getType() const
+{
+	return PropertyType::PROGRAM;
+}

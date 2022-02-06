@@ -12,21 +12,22 @@ Largix::PropertyView::PropertyView(QWidget *parent) : QWidget(parent), _pBrowser
 	setLayout(pVBoxLayout);
 }
 
-void Largix::PropertyView::addProperty(PropertyType type, PropertyModel* pPropertyModel)
+void Largix::PropertyView::addProperty(PropertyModel* pPropertyModel)
 {
-	if (_properties.contains(type)) {
+	PropertyType type = pPropertyModel->getType();
+	if (_propertyHash.contains(type)) {
 		return;
 	}
-	_properties.insert(type, pPropertyModel);
+	_propertyHash.insert(type, pPropertyModel);
 	_pBrowser->addProperty(pPropertyModel->getGroupProperty());
 }
 
 void Largix::PropertyView::removeProperty(PropertyType type)
 {
-	if (_properties.contains(type)) {
-		PropertyModel* pModel = _properties.value(type);
+	if (_propertyHash.contains(type)) {
+		PropertyModel* pModel = _propertyHash.value(type);
 		_pBrowser->removeProperty(pModel->getGroupProperty());
-		_properties.remove(type);
+		_propertyHash.remove(type);
 	}
 }
 
@@ -37,7 +38,7 @@ QtAbstractPropertyBrowser* Largix::PropertyView::getBrowser() const
 
 Largix::PropertyView::~PropertyView()
 {
-	if (!_properties.isEmpty()) {
-		qDeleteAll(_properties.values());
+	if (!_propertyHash.isEmpty()) {
+		qDeleteAll(_propertyHash.values());
 	}
 }

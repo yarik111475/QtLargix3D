@@ -49,7 +49,17 @@ namespace Largix
 		bool           _visible;
 
 	protected slots:
-		virtual void slotPropertyChanged()=0;
+		virtual void slotSizeChanged(const QSize& size) = 0;
+	protected slots:
+		virtual void slotColorChanged(const QColor& color) = 0;
+	protected slots:
+		virtual void slotPointChanged(const QPoint3D& point) = 0;
+	protected slots:
+		virtual void slotRotationChanged(const QRotation3D& rotation) = 0;
+	protected slots:
+		virtual void slotTransparencyChanged(double transparency) = 0;
+	protected slots:
+		virtual void slotVisibleChanged(bool visible) = 0;
 
 	signals:
 		void signalSizeChanged(const QSize& size);

@@ -23,3 +23,8 @@ QtProperty* Largix::PartPropertyModel::getGroupProperty()
 	pGroupProperty->addSubProperty(_pTransparencyProperty);
 	return pGroupProperty;
 }
+
+PropertyType Largix::PartPropertyModel::getType() const
+{
+	return PropertyType::PART;
+}

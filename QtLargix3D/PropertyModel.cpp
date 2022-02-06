@@ -59,7 +59,9 @@ void Largix::PropertyModel::setBrowser(QtAbstractPropertyBrowser* pBrowser)
 	//Transparency property section
 	_pTransparencyManager = new QtDoublePropertyManager(pBrowser);
 	_pTransparencyProperty = _pTransparencyManager->addProperty(QObject::tr("Transparency"));
-	_pTransparencyManager->setValue(_pTransparencyProperty, double(0.0));
+	_pTransparencyManager->setValue(_pTransparencyProperty, 1.0);
+	_pTransparencyManager->setRange(_pTransparencyProperty, 0, 1);
+	_pTransparencyManager->setSingleStep(_pTransparencyProperty, 0.1);
 
 	QtDoubleSpinBoxFactory* pTransparencyFactory = new QtDoubleSpinBoxFactory(pBrowser);
 	pBrowser->setFactoryForManager(_pTransparencyManager, pTransparencyFactory);
@@ -70,7 +72,7 @@ void Largix::PropertyModel::setBrowser(QtAbstractPropertyBrowser* pBrowser)
 	//Visible property section
 	_pVisibleManager = new QtBoolPropertyManager(pBrowser);
 	_pVisibleProperty = _pVisibleManager->addProperty(QObject::tr("Visible"));
-	_pVisibleManager->setValue(_pVisibleProperty, false);
+	_pVisibleManager->setValue(_pVisibleProperty, true);
 
 	QtCheckBoxFactory* pVisibleFactory = new QtCheckBoxFactory(pBrowser);
 	pBrowser->setFactoryForManager(_pVisibleManager, pVisibleFactory);
@@ -153,36 +155,31 @@ bool Largix::PropertyModel::getVisible() const
 
 void Largix::PropertyModel::slotSizeChanged(QtProperty* property, const QSize& val)
 {
-	//emit signalSizeChanged(val);
-	emit signalPropertyChanged();
+	emit signalSizeChanged(val);
 }
 
 void Largix::PropertyModel::slotColorChanged(QtProperty* property, const QColor& val)
 {
-	//emit signalColorChanged(val);
-	emit signalPropertyChanged();
+	emit signalColorChanged(val);
 }
 
 void Largix::PropertyModel::slotPointChanged(QtProperty* property, const QPoint3D& val)
 {
-	//emit signalPointChanged(val);
-	emit signalPropertyChanged();
+	emit signalPointChanged(val);
 }
 
 void Largix::PropertyModel::slotRotationChanged(QtProperty* property, const QRotation3D& val)
 {
-	//emit signalRotationChanged(val);
-	emit signalPropertyChanged();
+	emit signalRotationChanged(val);
 }
 
 void Largix::PropertyModel::slotTransparencyChanged(QtProperty* property, double val)
 {
-	//emit signalTransparencyChanged(val);
-	emit signalPropertyChanged();
+	emit signalTransparencyChanged(val);
 }
 
 void Largix::PropertyModel::slotVisibleChanged(QtProperty* property, bool val)
 {
-	//emit signalVisibleChanged(val);
+	emit signalVisibleChanged(val);
 	emit signalPropertyChanged();
 }

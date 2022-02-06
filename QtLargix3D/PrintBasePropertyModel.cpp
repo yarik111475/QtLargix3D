@@ -23,3 +23,8 @@ QtProperty* Largix::PrintBasePropertyModel::getGroupProperty()
 	pGroupProperty->addSubProperty(_pTransparencyProperty);
 	return pGroupProperty;
 }
+
+PropertyType Largix::PrintBasePropertyModel::getType() const
+{
+	return PropertyType::PRINTBASE;
+}

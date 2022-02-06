@@ -10,20 +10,29 @@ Largix::PropertyModel* Largix::ProgramModel::getPropertyModel(PropertyView* pPro
 {
 	ProgramPropertyModel* pModel = new ProgramPropertyModel("ProgramModel", this);
 	pModel->setBrowser(pPropertyView->getBrowser());
-	QObject::connect(pModel, &PropertyModel::signalPropertyChanged,
-		this, &ProgramModel::slotPropertyChanged);
+	
 	return pModel;
 }
 
-void Largix::ProgramModel::slotPropertyChanged()
+void Largix::ProgramModel::slotSizeChanged(const QSize& size)
 {
-	PropertyModel* pModel = static_cast<PropertyModel*>(sender());
-	if (pModel) {
-		setSize(pModel->getSize());
-		setColor(pModel->getColor());
-		setPoint(pModel->getPoint());
-		setRotation(pModel->getRotation());
-		setTransparency(pModel->getTransparency());
-		setVisible(pModel->getVisible());
-	}
+}
+void Largix::ProgramModel::slotColorChanged(const QColor& color)
+{
+}
+
+void Largix::ProgramModel::slotPointChanged(const QPoint3D& point)
+{
+}
+
+void Largix::ProgramModel::slotRotationChanged(const QRotation3D& rotation)
+{
+}
+
+void Largix::ProgramModel::slotTransparencyChanged(double transparency)
+{
+}
+
+void Largix::ProgramModel::slotVisibleChanged(bool visible)
+{
 }

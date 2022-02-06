@@ -12,5 +12,6 @@ namespace Largix
 		PartPropertyModel(const QString& title, QObject* parent=nullptr);
 		~PartPropertyModel();
 		virtual QtProperty* getGroupProperty() override;
+		virtual PropertyType getType() const override;
 	};
 }

@@ -30,13 +30,13 @@ Largix::ProjectController::ProjectController(QObject* parent) :QObject(parent), 
 	ObjectModel* pProgramModel = createObjectModel(ObjectType::PROGRAM);
 	ObjectModel* pPrintBaseModel = createObjectModel(ObjectType::PRINTBASE);
 
-	ObjectView* pPartView = new PartView;
+	ObjectView* pPartView = createObjectView(ViewType::PART);
 	pPartView->setObjectModel(pPartModel);
 
-	ObjectView* pProgramView = new ProgramView;
+	ObjectView* pProgramView = createObjectView(ViewType::PROGRAM);
 	pProgramView->setObjectModel(pProgramModel);
 
-	ObjectView* pPrintBaseView = new PrintBaseView;
+	ObjectView* pPrintBaseView = createObjectView(ViewType::PRINTBASE);
 	pPrintBaseView->setObjectModel(pPrintBaseModel);
 
 
@@ -44,9 +44,13 @@ Largix::ProjectController::ProjectController(QObject* parent) :QObject(parent), 
 	PropertyModel* pProgramProperty = pProgramModel->getPropertyModel(_pPropertyView);
 	PropertyModel* pPrintBaseProperty = pPrintBaseModel->getPropertyModel(_pPropertyView);
 
-	_pPropertyView->addProperty(PropertyType::PART, pPartProperty);
-	_pPropertyView->addProperty(PropertyType::PROGRAM, pProgramProperty);
-	_pPropertyView->addProperty(PropertyType::PRINTBASE, pPrintBaseProperty);
+	_pPropertyView->addProperty(pPartProperty);
+	//_pPropertyView->addProperty(pProgramProperty);
+	//_pPropertyView->addProperty(pPrintBaseProperty);
+
+	_pWidget3D->addView(pPartView);
+	//_pWidget3D->addView(pProgramView);
+	//_pWidget3D->addView(pPrintBaseView);
 }
 
 Largix::Widget3D* Largix::ProjectController::getWidget3D() const
