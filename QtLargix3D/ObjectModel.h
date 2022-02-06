@@ -9,6 +9,9 @@
 
 namespace Largix
 {
+	class PropertyModel;
+	class PropertyView;
+
 	class ObjectModel : public QObject
 	{
 		Q_OBJECT
@@ -35,14 +38,18 @@ namespace Largix
 		void setVisible(bool visible);
 		bool getVisible()const;
 
+		virtual PropertyModel* getPropertyModel(PropertyView* pPropertyView) = 0;
 
 	private:
-		QSize          _size{};
-		QColor         _color{};
-		QPoint3D       _point{};
-		QRotation3D    _rotation{};
-		double         _transparency{ 0.0 };
-		bool           _visible{ false };
+		QSize          _size;
+		QColor         _color;
+		QPoint3D       _point;
+		QRotation3D    _rotation;
+		double         _transparency;
+		bool           _visible;
+
+	protected slots:
+		virtual void slotPropertyChanged()=0;
 
 	signals:
 		void signalSizeChanged(const QSize& size);

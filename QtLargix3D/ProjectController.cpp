@@ -10,10 +10,53 @@
 #include "ProgramView.h"
 #include "PrintBaseView.h"
 
+#include "PropertyModel.h"
+#include "PartPropertyModel.h"
+#include "ProgramPropertyModel.h"
+#include "PrintBasePropertyModel.h"
+
+#include "PropertyView.h"
+#include "Widget3D.h"
+#include "Enumerations.h"
+
 #include <QObject>
 
-Largix::ProjectController::ProjectController()
+Largix::ProjectController::ProjectController(QObject* parent) :QObject(parent), _pPropertyView{ nullptr }, _pWidget3D{ nullptr }
 {
+	_pPropertyView = new PropertyView;
+	_pWidget3D = new Widget3D;
+
+	ObjectModel* pPartModel = createObjectModel(ObjectType::PART);
+	ObjectModel* pProgramModel = createObjectModel(ObjectType::PROGRAM);
+	ObjectModel* pPrintBaseModel = createObjectModel(ObjectType::PRINTBASE);
+
+	ObjectView* pPartView = new PartView;
+	pPartView->setObjectModel(pPartModel);
+
+	ObjectView* pProgramView = new ProgramView;
+	pProgramView->setObjectModel(pProgramModel);
+
+	ObjectView* pPrintBaseView = new PrintBaseView;
+	pPrintBaseView->setObjectModel(pPrintBaseModel);
+
+
+	PropertyModel* pPartProperty=pPartModel->getPropertyModel(_pPropertyView);
+	PropertyModel* pProgramProperty = pProgramModel->getPropertyModel(_pPropertyView);
+	PropertyModel* pPrintBaseProperty = pPrintBaseModel->getPropertyModel(_pPropertyView);
+
+	_pPropertyView->addProperty(PropertyType::PART, pPartProperty);
+	_pPropertyView->addProperty(PropertyType::PROGRAM, pProgramProperty);
+	_pPropertyView->addProperty(PropertyType::PRINTBASE, pPrintBaseProperty);
+}
+
+Largix::Widget3D* Largix::ProjectController::getWidget3D() const
+{
+	return _pWidget3D;
+}
+
+Largix::PropertyView* Largix::ProjectController::getPropertyView() const
+{
+	return _pPropertyView;
 }
 
 Largix::ObjectModel* Largix::ProjectController::createObjectModel(ObjectType type, QObject* parent)

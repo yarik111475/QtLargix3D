@@ -15,3 +15,10 @@ enum class ViewType
 	PROGRAM,
 	PRINTBASE
 };
+enum class PropertyType
+{
+	NONE,
+	PART,
+	PROGRAM,
+	PRINTBASE
+};

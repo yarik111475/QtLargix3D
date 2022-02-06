@@ -35,6 +35,15 @@
     <Filter Include="Views\Abstract">
       <UniqueIdentifier>{58abbeac-b12d-4c48-9895-116d66ffd1aa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Properties\Abstract">
+      <UniqueIdentifier>{8b6d4e53-ed87-4290-8653-ff19c676de0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Properties\Views">
+      <UniqueIdentifier>{3e82791d-983d-4f68-b8b1-5300f5bf498b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Widgets">
+      <UniqueIdentifier>{f910870f-81c2-455e-a207-fee20daea6b5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="MainWindow.qrc">
@@ -53,9 +62,6 @@
     </ClCompile>
     <ClCompile Include="ProjectController.cpp">
       <Filter>Controllers</Filter>
-    </ClCompile>
-    <ClCompile Include="PropertyModel.cpp">
-      <Filter>Properties</Filter>
     </ClCompile>
     <ClCompile Include="PrintBaseModel.cpp">
       <Filter>Models</Filter>
@@ -81,24 +87,57 @@
     <ClCompile Include="ProgramView.cpp">
       <Filter>Views</Filter>
     </ClCompile>
+    <ClCompile Include="PropertyModel.cpp">
+      <Filter>Properties\Abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="PartPropertyModel.cpp">
+      <Filter>Properties</Filter>
+    </ClCompile>
+    <ClCompile Include="PrintBasePropertyModel.cpp">
+      <Filter>Properties</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramPropertyModel.cpp">
+      <Filter>Properties</Filter>
+    </ClCompile>
+    <ClCompile Include="Widget3D.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyView.cpp">
+      <Filter>Properties\Views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="PropertyModel.h">
-      <Filter>Properties</Filter>
-    </QtMoc>
     <QtMoc Include="ObjectModel.h">
       <Filter>Models\Abstract</Filter>
     </QtMoc>
     <QtMoc Include="ObjectView.h">
       <Filter>Views\Abstract</Filter>
     </QtMoc>
+    <QtMoc Include="ProjectController.h">
+      <Filter>Controllers</Filter>
+    </QtMoc>
+    <QtMoc Include="PropertyModel.h">
+      <Filter>Properties\Abstract</Filter>
+    </QtMoc>
+    <QtMoc Include="PartPropertyModel.h">
+      <Filter>Properties</Filter>
+    </QtMoc>
+    <QtMoc Include="PrintBasePropertyModel.h">
+      <Filter>Properties</Filter>
+    </QtMoc>
+    <QtMoc Include="ProgramPropertyModel.h">
+      <Filter>Properties</Filter>
+    </QtMoc>
+    <QtMoc Include="Widget3D.h">
+      <Filter>Widgets</Filter>
+    </QtMoc>
+    <QtMoc Include="PropertyView.h">
+      <Filter>Properties\Views</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enumerations.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ProjectController.h">
-      <Filter>Controllers</Filter>
     </ClInclude>
     <ClInclude Include="PrintBaseModel.h">
       <Filter>Models</Filter>

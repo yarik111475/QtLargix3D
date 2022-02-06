@@ -18,12 +18,25 @@ namespace Largix
 	public:
 		ObjectView(QObject* parent=nullptr);
 		virtual ~ObjectView();
-		virtual void setObjectModel(ObjectModel* pObjectModel);
+		void setObjectModel(ObjectModel* pObjectModel);
 		virtual vtkProp* getActor() = 0;
 	protected:
 		ObjectModel* _pObjectModel;
 		vtkProp* _pActor;
 	private:
+
+	private slots:
+		void slotSizeChanged(const QSize& size);
+	private slots:
+		void slotColorChanged(const QColor& color);
+	private slots:
+		void slotPointChanged(const QPoint3D& point);
+	private slots:
+		void slotRotationChanged(const QRotation3D& rotation);
+	private slots:
+		void slotTransparencyChanged(double transparency);
+	private slots:
+		void slotVisibleChanged(double visible);
 
 	};
 }

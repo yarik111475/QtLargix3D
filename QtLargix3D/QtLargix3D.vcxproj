@@ -96,13 +96,18 @@
   <ItemGroup>
     <ClCompile Include="ObjectView.cpp" />
     <ClCompile Include="PartModel.cpp" />
+    <ClCompile Include="PartPropertyModel.cpp" />
     <ClCompile Include="PartView.cpp" />
     <ClCompile Include="PrintBaseModel.cpp" />
+    <ClCompile Include="PrintBasePropertyModel.cpp" />
     <ClCompile Include="PrintBaseView.cpp" />
     <ClCompile Include="ProgramModel.cpp" />
+    <ClCompile Include="ProgramPropertyModel.cpp" />
     <ClCompile Include="ProgramView.cpp" />
     <ClCompile Include="ProjectController.cpp" />
     <ClCompile Include="PropertyModel.cpp" />
+    <ClCompile Include="PropertyView.cpp" />
+    <ClCompile Include="Widget3D.cpp" />
     <QtRcc Include="MainWindow.qrc" />
     <QtMoc Include="MainWindow.h" />
     <ClCompile Include="ObjectModel.cpp" />
@@ -114,14 +119,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enumerations.h" />
+    <QtMoc Include="PropertyView.h" />
+    <QtMoc Include="Widget3D.h" />
     <QtMoc Include="ObjectView.h" />
     <ClInclude Include="PartModel.h" />
+    <QtMoc Include="PartPropertyModel.h" />
     <ClInclude Include="PartView.h" />
     <ClInclude Include="PrintBaseModel.h" />
+    <QtMoc Include="PrintBasePropertyModel.h" />
     <ClInclude Include="PrintBaseView.h" />
     <ClInclude Include="ProgramModel.h" />
+    <QtMoc Include="ProgramPropertyModel.h" />
     <ClInclude Include="ProgramView.h" />
-    <ClInclude Include="ProjectController.h" />
+    <QtMoc Include="ProjectController.h" />
     <QtMoc Include="PropertyModel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
