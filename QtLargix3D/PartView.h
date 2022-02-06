@@ -26,6 +26,8 @@ namespace Largix
 		virtual void slotTransparencyChanged(double transparency) override;
 	protected slots:
 		virtual void slotVisibleChanged(double visible) override;
+	protected slots:
+		void slotRepresentationChanged(RepresentationMode representation) override;
 
 	private:
 		vtkSmartPointer<vtkActor> _pActor;

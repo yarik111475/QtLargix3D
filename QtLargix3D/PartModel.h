@@ -1,5 +1,6 @@
 #pragma once
 #include "ObjectModel.h"
+#include "Enumerations.h"
 
 
 namespace Largix
@@ -23,6 +24,8 @@ namespace Largix
 		void slotTransparencyChanged(double transparency) override;
 	protected slots:
 		void slotVisibleChanged(bool visible) override;
+	protected slots:
+		void slotRepresentationChanged(RepresentationMode representation) override;
 	};
 }
 

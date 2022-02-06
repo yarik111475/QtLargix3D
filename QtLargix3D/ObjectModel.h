@@ -5,6 +5,7 @@
 #include <QSize>
 #include <QObject>
 #include <QObject>
+#include "Enumerations.h"
 
 
 namespace Largix
@@ -38,28 +39,34 @@ namespace Largix
 		void setVisible(bool visible);
 		bool getVisible()const;
 
+		void setRepresentation(RepresentationMode representation);
+		RepresentationMode getRepresentation()const;
+
 		virtual PropertyModel* getPropertyModel(PropertyView* pPropertyView) = 0;
 
 	private:
-		QSize          _size;
-		QColor         _color;
-		QPoint3D       _point;
-		QRotation3D    _rotation;
-		double         _transparency;
-		bool           _visible;
+		QSize                _size;
+		QColor               _color;
+		QPoint3D             _point;
+		QRotation3D          _rotation;
+		double               _transparency;
+		bool                 _visible;
+		RepresentationMode  _representation;
 
 	protected slots:
-		virtual void slotSizeChanged(const QSize& size) = 0;
+		virtual void slotSizeChanged(const QSize& size) {}
 	protected slots:
-		virtual void slotColorChanged(const QColor& color) = 0;
+		virtual void slotColorChanged(const QColor& color) {}
 	protected slots:
-		virtual void slotPointChanged(const QPoint3D& point) = 0;
+		virtual void slotPointChanged(const QPoint3D& point) {}
 	protected slots:
-		virtual void slotRotationChanged(const QRotation3D& rotation) = 0;
+		virtual void slotRotationChanged(const QRotation3D& rotation) {}
 	protected slots:
-		virtual void slotTransparencyChanged(double transparency) = 0;
+		virtual void slotTransparencyChanged(double transparency) {}
 	protected slots:
-		virtual void slotVisibleChanged(bool visible) = 0;
+		virtual void slotVisibleChanged(bool visible) {};
+	protected slots:
+		virtual void slotRepresentationChanged(RepresentationMode representation) {}
 
 	signals:
 		void signalSizeChanged(const QSize& size);
@@ -73,6 +80,8 @@ namespace Largix
 		void signalTransparencyChanged(double transparency);
 	signals:
 		void signalVisibleChanged(bool visible);
+	signals:
+		void signalRepresentationChanged(RepresentationMode representation);
 	};
 }
 

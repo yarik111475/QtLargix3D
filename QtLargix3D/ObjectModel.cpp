@@ -76,3 +76,14 @@ bool Largix::ObjectModel::getVisible() const
 {
 	return _visible;
 }
+
+void Largix::ObjectModel::setRepresentation(RepresentationMode representation)
+{
+	_representation = representation;
+	emit signalRepresentationChanged(_representation);
+}
+
+RepresentationMode Largix::ObjectModel::getRepresentation() const
+{
+	return _representation;
+}

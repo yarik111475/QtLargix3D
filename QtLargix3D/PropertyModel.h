@@ -1,4 +1,5 @@
 #pragma once
+#include <QHash>
 #include <QSize>
 #include <QColor>
 #include <QObject>
@@ -13,6 +14,7 @@ class QtPoint3DPropertyManager;
 class QtRotation3DPropertyManager;
 class QtDoublePropertyManager;
 class QtBoolPropertyManager;
+class QtEnumPropertyManager;
 class QtAbstractPropertyBrowser;
 
 namespace Largix
@@ -57,6 +59,7 @@ namespace Largix
 		QtProperty* _pRotationProperty;
 		QtProperty* _pTransparencyProperty;
 		QtProperty* _pVisibleProperty;
+		QtProperty* _pRepresentationProperty;
 
 	private:
 		QtSizePropertyManager*       _pSizeManager;
@@ -65,6 +68,9 @@ namespace Largix
 		QtRotation3DPropertyManager* _pRotationManager;
 		QtDoublePropertyManager*     _pTransparencyManager;
 		QtBoolPropertyManager*       _pVisibleManager;
+		QtEnumPropertyManager*       _pRepresentationManager;
+
+		QHash<int, RepresentationMode> _representationModes;
 
 	private slots:
 		void slotSizeChanged(QtProperty* property, const QSize& val);
@@ -78,6 +84,8 @@ namespace Largix
 		void slotTransparencyChanged(QtProperty* property, double val);
 	private slots:
 		void slotVisibleChanged(QtProperty* property, bool val);
+	private slots:
+		void slotRepresentationChanged(QtProperty* property, int val);
 
 	signals:
 		void signalPropertyChanged();
@@ -93,6 +101,8 @@ namespace Largix
 		void signalTransparencyChanged(double transparency);
 	signals:
 		void signalVisibleChanged(bool visible);
+	signals:
+		void signalRepresentationChanged(RepresentationMode representation);
 	};
 }
 

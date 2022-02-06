@@ -49,6 +49,10 @@ void Largix::PropertyModel::setBrowser(QtAbstractPropertyBrowser* pBrowser)
 	_pRotationManager = new QtRotation3DPropertyManager(pBrowser);
 	_pRotationProperty = _pRotationManager->addProperty(QObject::tr("Rotation"));
 	_pRotationManager->setValue(_pRotationProperty, QRotation3D{});
+	//set rotation angles from -360 to 360
+	_pRotationManager->subIntPropertyManager()->setRange(_pRotationProperty->subProperties().at(0), -360, 360);
+	_pRotationManager->subIntPropertyManager()->setRange(_pRotationProperty->subProperties().at(1), -360, 360);
+	_pRotationManager->subIntPropertyManager()->setRange(_pRotationProperty->subProperties().at(2), -360, 360);
 
 	QtSpinBoxFactory* pRotationFactory = new QtSpinBoxFactory(pBrowser);
 	pBrowser->setFactoryForManager(_pRotationManager->subIntPropertyManager(), pRotationFactory);
@@ -69,7 +73,7 @@ void Largix::PropertyModel::setBrowser(QtAbstractPropertyBrowser* pBrowser)
 	QObject::connect(_pTransparencyManager, &QtDoublePropertyManager::valueChanged,
 		this, &PropertyModel::slotTransparencyChanged);
 
-	//Visible property section
+	//Representation property section
 	_pVisibleManager = new QtBoolPropertyManager(pBrowser);
 	_pVisibleProperty = _pVisibleManager->addProperty(QObject::tr("Visible"));
 	_pVisibleManager->setValue(_pVisibleProperty, true);
@@ -79,6 +83,24 @@ void Largix::PropertyModel::setBrowser(QtAbstractPropertyBrowser* pBrowser)
 
 	QObject::connect(_pVisibleManager, &QtBoolPropertyManager::valueChanged,
 		this, &PropertyModel::slotVisibleChanged);
+
+	//VisuaMode property section	
+	_pRepresentationManager = new QtEnumPropertyManager(pBrowser);
+	_pRepresentationProperty = _pRepresentationManager->addProperty("Representation");
+
+	_representationModes.insert(0, RepresentationMode::SURFACE);
+	_representationModes.insert(1, RepresentationMode::WIREFRAME);
+	_representationModes.insert(2, RepresentationMode::COMPLEX);
+
+	QStringList modes;
+	modes << "Surface" << "Wireframe" << "Complex";
+	_pRepresentationManager->setEnumNames(_pRepresentationProperty, modes);
+	_pRepresentationManager->setValue(_pRepresentationProperty, 0);
+
+	QObject::connect(_pRepresentationManager, &QtEnumPropertyManager::valueChanged,
+		this, &PropertyModel::slotRepresentationChanged);
+	QtEnumEditorFactory* pVisualModeFactory = new QtEnumEditorFactory(pBrowser);
+	pBrowser->setFactoryForManager(_pRepresentationManager, pVisualModeFactory);
 }
 
 void Largix::PropertyModel::setSize(const QSize& size)
@@ -181,5 +203,9 @@ void Largix::PropertyModel::slotTransparencyChanged(QtProperty* property, double
 void Largix::PropertyModel::slotVisibleChanged(QtProperty* property, bool val)
 {
 	emit signalVisibleChanged(val);
-	emit signalPropertyChanged();
+}
+
+void Largix::PropertyModel::slotRepresentationChanged(QtProperty* property, int val)
+{
+	emit signalRepresentationChanged(_representationModes.value(val));
 }

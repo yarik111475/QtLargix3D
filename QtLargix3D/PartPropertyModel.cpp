@@ -21,6 +21,7 @@ QtProperty* Largix::PartPropertyModel::getGroupProperty()
 	pGroupProperty->addSubProperty(_pSizeProperty);
 	pGroupProperty->addSubProperty(_pRotationProperty);
 	pGroupProperty->addSubProperty(_pTransparencyProperty);
+	pGroupProperty->addSubProperty(_pRepresentationProperty);
 	return pGroupProperty;
 }
 

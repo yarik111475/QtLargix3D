@@ -2,8 +2,7 @@
 #include "ObjectModel.h"
 #include "vtkActor.h"
 
-Largix::ObjectView::ObjectView(QObject* parent) 
-	: QObject(parent), _pObjectModel{ nullptr }
+Largix::ObjectView::ObjectView(QObject* parent) : QObject(parent), _pObjectModel{ nullptr }
 {
 }
 
@@ -30,4 +29,6 @@ void Largix::ObjectView::setObjectModel(ObjectModel* pObjectModel)
 		this, &ObjectView::slotTransparencyChanged);
 	QObject::connect(_pObjectModel, &ObjectModel::signalVisibleChanged,
 		this, &ObjectView::slotVisibleChanged);
+	QObject::connect(_pObjectModel, &ObjectModel::signalRepresentationChanged,
+		this, &ObjectView::slotRepresentationChanged);
 }

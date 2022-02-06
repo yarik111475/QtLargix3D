@@ -23,6 +23,8 @@ Largix::PropertyModel* Largix::PartModel::getPropertyModel(PropertyView* pProper
 		this, &PartModel::slotTransparencyChanged);
 	QObject::connect(pModel, &PartPropertyModel::signalVisibleChanged,
 		this, &PartModel::slotVisibleChanged);
+	QObject::connect(pModel, &PartPropertyModel::signalRepresentationChanged,
+		this, &PartModel::slotRepresentationChanged);
 	return pModel;
 }
 
@@ -54,4 +56,9 @@ void Largix::PartModel::slotTransparencyChanged(double transparency)
 void Largix::PartModel::slotVisibleChanged(bool visible)
 {
 	setVisible(visible);
+}
+
+void Largix::PartModel::slotRepresentationChanged(RepresentationMode representation)
+{
+	setRepresentation(representation);
 }

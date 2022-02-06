@@ -39,6 +39,8 @@ namespace Largix
 		virtual void slotTransparencyChanged(double transparency) = 0;;
 	protected slots:
 		virtual void slotVisibleChanged(double visible) = 0;
+	protected slots:
+		virtual void slotRepresentationChanged(RepresentationMode representation) {}
 
 	signals:
 		void signalRender();

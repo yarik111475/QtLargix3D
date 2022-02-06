@@ -26,7 +26,8 @@ Largix::Widget3D::Widget3D(QWidget *parent) : QWidget(parent)
 
 	_widget = new QVTKOpenGLNativeWidget(this);
 	_widget->setRenderWindow(_renderWindow);
-
+	//vtkCamera* pCamera = _renderer->GetActiveCamera();
+	
 	addAxes();
 
 	QVBoxLayout* pVBoxLayout = new QVBoxLayout;
@@ -71,6 +72,9 @@ Largix::ObjectView* Largix::Widget3D::getViewByType(ViewType type)
 void Largix::Widget3D::addAxes()
 {
 	vtkSmartPointer<vtkAxesActor> pAxes = vtkSmartPointer<vtkAxesActor>::New();
+	//pAxes->SetXAxisLabelText("");
+	//pAxes->SetYAxisLabelText("");
+	//pAxes->SetZAxisLabelText("");
 	_renderer->AddActor(pAxes);
 }
 

@@ -9,6 +9,7 @@
 #include "vtkSphereSource.h"
 #include "vtkPolyDataMapper.h"
 #include "vtkCylinderSource.h"
+#include "vtkTransform.h"
 
 Largix::PartView::PartView(QObject* parent):ObjectView(parent)
 {
@@ -19,6 +20,8 @@ Largix::PartView::PartView(QObject* parent):ObjectView(parent)
 	vtkNew<vtkPolyDataMapper> sphereMapper;
 	sphereMapper->SetInputConnection(sphereSource->GetOutputPort());
 	_pActor->SetMapper(sphereMapper);
+	//_pActor->SetPosition(0, 0, 0);
+	_pActor->SetOrigin(0, 0, 0);
 }
 
 vtkSmartPointer<vtkProp> Largix::PartView::getActor()
@@ -33,7 +36,6 @@ ViewType Largix::PartView::getType() const
 
 void Largix::PartView::slotSizeChanged(const QSize& size)
 {
-	auto mapper = _pActor->GetMapper();
 	emit signalRender();
 }
 
@@ -45,15 +47,19 @@ void Largix::PartView::slotColorChanged(const QColor& color)
 
 void Largix::PartView::slotPointChanged(const QPoint3D& point)
 {
-	_pActor->SetPosition(point.x(), point.y(), point.z());
+	vtkTransform* pTransform = vtkTransform::New();
+	pTransform->Translate(point.x(), point.y(), point.z());
+	_pActor->SetUserTransform(pTransform);
 	emit signalRender();
 }
 
 void Largix::PartView::slotRotationChanged(const QRotation3D& rotation)
 {
-	_pActor->RotateX(rotation.x());
-	_pActor->RotateY(rotation.y());
-	_pActor->RotateZ(rotation.z());
+	vtkTransform* pTransform = vtkTransform::New();
+	pTransform->RotateX(rotation.x());
+	pTransform->RotateY(rotation.y());
+	pTransform->RotateZ(rotation.z());
+	_pActor->SetUserTransform(pTransform);
 	emit signalRender();
 }
 
@@ -66,5 +72,25 @@ void Largix::PartView::slotTransparencyChanged(double transparency)
 void Largix::PartView::slotVisibleChanged(double visible)
 {
 	_pActor->SetVisibility(visible);
+	emit signalRender();
+}
+
+void Largix::PartView::slotRepresentationChanged(RepresentationMode representation)
+{
+	switch (representation) {
+	case RepresentationMode::SURFACE:
+		_pActor->GetProperty()->EdgeVisibilityOff();
+		_pActor->GetProperty()->SetRepresentationToSurface();
+		break;
+	case RepresentationMode::WIREFRAME:
+		_pActor->GetProperty()->EdgeVisibilityOff();
+		_pActor->GetProperty()->SetRepresentationToWireframe();
+		break;
+	case RepresentationMode::COMPLEX:
+		_pActor->GetProperty()->EdgeVisibilityOn();
+		_pActor->GetProperty()->SetEdgeColor(0, 0, 0);
+		_pActor->GetProperty()->SetRepresentationToSurface();
+		break;
+	}
 	emit signalRender();
 }

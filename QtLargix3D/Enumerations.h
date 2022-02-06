@@ -22,3 +22,10 @@ enum class PropertyType
 	PROGRAM,
 	PRINTBASE
 };
+enum class RepresentationMode
+{
+	NONE,
+	WIREFRAME,
+	SURFACE,
+	COMPLEX
+};
