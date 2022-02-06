@@ -84,7 +84,7 @@ void Largix::PropertyModel::setBrowser(QtAbstractPropertyBrowser* pBrowser)
 	QObject::connect(_pVisibleManager, &QtBoolPropertyManager::valueChanged,
 		this, &PropertyModel::slotVisibleChanged);
 
-	//VisuaMode property section	
+	//Representation property section	
 	_pRepresentationManager = new QtEnumPropertyManager(pBrowser);
 	_pRepresentationProperty = _pRepresentationManager->addProperty("Representation");
 

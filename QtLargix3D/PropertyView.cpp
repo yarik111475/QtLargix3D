@@ -25,9 +25,12 @@ void Largix::PropertyView::addProperty(PropertyModel* pPropertyModel)
 void Largix::PropertyView::removeProperty(PropertyType type)
 {
 	if (_propertyHash.contains(type)) {
-		PropertyModel* pModel = _propertyHash.value(type);
-		_pBrowser->removeProperty(pModel->getGroupProperty());
 		_propertyHash.remove(type);
+
+		_pBrowser->clear();	
+		for (const auto& item : _propertyHash.values()) {
+			_pBrowser->addProperty(item->getGroupProperty());
+		}
 	}
 }
 

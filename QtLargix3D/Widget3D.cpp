@@ -49,6 +49,7 @@ void Largix::Widget3D::addView(ObjectView* pView)
 		this, &Widget3D::slotRender);
 	_viewHash.insert(type, pView);
 	_renderer->AddActor(pView->getActor());
+	_renderer->ResetCamera();
 	_renderWindow->Render();
 }
 
