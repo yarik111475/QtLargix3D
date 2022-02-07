@@ -28,17 +28,17 @@ namespace Largix
 		ObjectModel* _pObjectModel;
 
 	protected slots:
-		virtual void slotSizeChanged(const QSize& size) = 0;
+		virtual void slotSizeChanged(const QSize& size) {}
 	protected slots:
-		virtual void slotColorChanged(const QColor& color) = 0;
+		virtual void slotColorChanged(const QColor& color) {}
 	protected slots:
-		virtual void slotPointChanged(const QPoint3D& point) = 0;
+		virtual void slotPointChanged(const QPoint3D& point) {}
 	protected slots:
-		virtual void slotRotationChanged(const QRotation3D& rotation) = 0;
+		virtual void slotRotationChanged(const QRotation3D& rotation) {}
 	protected slots:
-		virtual void slotTransparencyChanged(double transparency) = 0;;
+		virtual void slotTransparencyChanged(double transparency) {}
 	protected slots:
-		virtual void slotVisibleChanged(double visible) = 0;
+		virtual void slotVisibleChanged(double visible) {}
 	protected slots:
 		virtual void slotRepresentationChanged(RepresentationMode representation) {}
 

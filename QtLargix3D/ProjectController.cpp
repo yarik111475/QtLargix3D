@@ -45,7 +45,7 @@ Largix::ProjectController::ProjectController(QObject* parent) :QObject(parent), 
 	PropertyModel* pPrintBaseProperty = pPrintBaseModel->getPropertyModel(_pPropertyView);
 
 	_pPropertyView->addProperty(pPartProperty);
-	_pPropertyView->addProperty(pProgramProperty);
+	//_pPropertyView->addProperty(pProgramProperty);
 	//_pPropertyView->addProperty(pPrintBaseProperty);
 
 	_pWidget3D->addView(pPartView);

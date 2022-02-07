@@ -73,9 +73,9 @@ Largix::ObjectView* Largix::Widget3D::getViewByType(ViewType type)
 void Largix::Widget3D::addAxes()
 {
 	vtkSmartPointer<vtkAxesActor> pAxes = vtkSmartPointer<vtkAxesActor>::New();
-	//pAxes->SetXAxisLabelText("");
-	//pAxes->SetYAxisLabelText("");
-	//pAxes->SetZAxisLabelText("");
+	pAxes->SetXAxisLabelText("");
+	pAxes->SetYAxisLabelText("");
+	pAxes->SetZAxisLabelText("");
 	_renderer->AddActor(pAxes);
 }
 

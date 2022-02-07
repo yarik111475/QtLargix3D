@@ -10,6 +10,7 @@
 #include "vtkPolyDataMapper.h"
 #include "vtkCylinderSource.h"
 #include "vtkTransform.h"
+#include "vtkLinearTransform.h"
 
 Largix::PartView::PartView(QObject* parent):ObjectView(parent)
 {
@@ -20,8 +21,7 @@ Largix::PartView::PartView(QObject* parent):ObjectView(parent)
 	vtkNew<vtkPolyDataMapper> sphereMapper;
 	sphereMapper->SetInputConnection(sphereSource->GetOutputPort());
 	_pActor->SetMapper(sphereMapper);
-	//_pActor->SetPosition(0, 0, 0);
-	_pActor->SetOrigin(0, 0, 0);
+	_pActor->GetProperty()->SetAnisotropy(10.0);
 }
 
 vtkSmartPointer<vtkProp> Largix::PartView::getActor()
